@@ -1,0 +1,34 @@
+
+ <meta charset="UTF-8"> 
+<html>
+<head>
+  <title>Websocket examples</title>
+</head>
+<body>
+here
+<div id ="content">
+
+</div>
+
+   <script type="text/javascript">
+    var content = document.getElementById('content');
+   var host = location.origin.replace(/^http/,'ws');
+//var  socket = new WebSocket(host);
+    var socket = new WebSocket(host);
+    socket.onopen = function () {
+        socket.send('hello from the client');
+        console.log('send message');
+    };
+
+    socket.onmessage = function (message) {
+        content.innerHTML += message.data +'<br />';
+    };
+
+    socket.onerror = function (error) {
+        console.log('WebSocket error: ' + error);
+    };
+   
+    
+</script>
+</body>
+</html>

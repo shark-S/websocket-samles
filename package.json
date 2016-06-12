@@ -1,0 +1,17 @@
+{
+  "name": "Websokcet-demo",
+  "version": "1.0.0",
+  "description": "send message",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+   "dependencies": {
+   "webrtc.io": "^0.0.4",
+   "ws": "^1.0.23",
+    "express" : "^4.4.5"
+  },
+  
+  "author": "shark_S",
+  "license": "ISC"
+}

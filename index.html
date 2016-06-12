@@ -1,0 +1,34 @@
+
+ <meta charset="UTF-8"> 
+<html>
+<head>
+	<title>Websocket examples</title>
+</head>
+<body>
+<div id ="chatlog">
+
+</div>
+
+   <script type="text/javascript">
+    var chat = document.getElementById('chatlog');
+   var host = location.origin.replace(/^http/,'ws');
+//var  socket = new WebSocket(host);
+    var socket = new WebSocket(host);
+    socket.onopen = function () {
+    	var z= Math.random();
+        socket.send(z);
+        console.log(z);
+    };
+
+    socket.onmessage = function (message) {
+        chat.innerHTML += message.data +'<br />';
+    };
+
+    socket.onerror = function (error) {
+        console.log('WebSocket error: ' + error);
+    };
+   
+    
+</script>
+</body>
+</html>

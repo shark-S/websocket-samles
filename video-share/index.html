@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="adapter.js"></script>
+    <title>WebRTC Video-Chat</title>
+  </head>
+  
+  <body>
+    <video id="remoteVideo" autoplay></video>
+    <br>
+    <video id="localVideo" autoplay ></video>
+    <br>
+    <input id="videoCallButton" type="button" disabled value="Video Call"/>
+    <input id="endCallButton" type="button" disabled value="End Call"/>
+    <script type="text/javascript">
+        var host = location.origin.replace(/^http/,'ws');
+        var  ws = new WebSocket(host),video;
+        navigator.getUserMedia({audio:true,video:true},
+        function(stream){
+           video = document.getElementById('localVideo');
+          
+          video.src = window.URL.createObjectURL(stream);
+           ws.onopen = function(){
+          ws.send(video.src);
+        }
+        },
+        function(err){
+          console.log("The following error occurred"+err.name);
+        }
+        )
+       
+        ws.onmessage = function(message){
+          var rvideo = document.getElementById('remoteVideo');
+          rvideo.src = message;
+        }
+        ws.onerror = function (error) {
+        console.log('WebSocket error: ' + error);
+    };
+    </script>
+  </body>
+</html>

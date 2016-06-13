@@ -1,4 +1,4 @@
-# websocket-samles
+# websocket-samples
 Some basic examples using websockets and nodejs
 
 First you can try basic.js. In basic.js when client goes to localhost:5000 or port which specified , it send a message to server and then server replies back a mesage to client.
